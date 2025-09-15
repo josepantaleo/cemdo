@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usina Solar Fotovoltaica CEMDO I</title>
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Estilos para Leaflet (mapas) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Biblioteca para gráficos (Chart.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="tema-claro">
+    <!-- Encabezado con logo, título y botones para cambiar tema e idioma -->
+    <header>
+        <div class="logo">
+            <img src="logo_Cemdo.png" alt="Logotipo de la Cooperativa CEMDO">
+        </div>
+        <h1>Usina Solar Fotovoltaica CEMDO I</h1>
+        <p>Energía limpia para Villa Dolores y la región</p>
+        <button id="toggleTema" aria-label="Cambiar tema">Modo Oscuro</button>
+        <button id="cambiarIdioma" aria-label="Cambiar idioma">English</button>
+    </header>
+
+    <!-- Barra de navegación con enlaces a secciones -->
+    <nav>
+        <a href="#info">Información</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#interactividad">Interactividad</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de información general sobre la usina solar -->
+        <section id="info">
+            <h2>Sobre la Usina Solar</h2>
+            <p>El “Parque Solar Papa Francisco”, sede de la Usina Solar Fotovoltaica CEMDO I, honra el legado del Papa
+                Francisco, impulsando la economía solidaria y el cuidado de nuestra Casa Común.</p>
+            <p>Esta usina aporta electricidad limpia y renovable a la comunidad, promoviendo un desarrollo sostenible.
+            </p>
+            <ul>
+                <li><strong>Capacidad instalada:</strong> 10 MW (AC)</li>
+                <li><strong>Paneles solares:</strong> 20.880 bifaciales de 615 W de alta eficiencia</li>
+                <li><strong>Producción:</strong> Equivalente al 16% del consumo local con beneficios ambientales y
+                    económicos</li>
+            </ul>
+            <a href="https://www.cemdo.com.ar" target="_blank">sitio web de Cooperativa
+                CEMDO</a>
+        </section>
+
+        <!-- Sección explicativa sobre la energía solar -->
+        <section id="sobre-energia-solar" tabindex="-1" aria-labelledby="energia-solar-title">
+            <h2 id="energia-solar-title">¿Qué es la Energía Solar?</h2>
+            <p>La energía solar es una fuente de energía renovable que se obtiene directamente del sol, utilizando la
+                radiación solar para generar electricidad o calor. Es una alternativa limpia y sostenible a los
+                combustibles fósiles, ya que no produce emisiones contaminantes ni gases de efecto invernadero durante
+                su uso.</p>
+            <p>Existen dos formas principales de aprovechar la energía solar:</p>
+            <ul>
+                <li><strong>Energía solar fotovoltaica:</strong> convierte la luz solar en electricidad mediante paneles
+                    solares compuestos por células fotovoltaicas.</li>
+            </ul>
+            <p>La energía solar es una de las fuentes renovables con mayor crecimiento a nivel mundial debido a sus
+                múltiples beneficios, entre ellos:</p>
+            <ul>
+                <li><strong>Sostenibilidad:</strong> es inagotable y reduce la dependencia de recursos no renovables.
+                </li>
+                <li><strong>Reducción de costos:</strong> con la tecnología adecuada, la generación solar puede
+                    disminuir considerablemente el costo de la electricidad.</li>
+                <li><strong>Bajo impacto ambiental:</strong> no emite contaminantes ni residuos tóxicos.</li>
+                <li><strong>Generación distribuida:</strong> permite instalar sistemas solares tanto en grandes plantas
+                    como en hogares y empresas.</li>
+            </ul>
+            <p>Gracias a estas ventajas, la energía solar contribuye al desarrollo sostenible y a la mitigación del
+                cambio climático, mejorando la calidad de vida de las comunidades y promoviendo un futuro energético más
+                limpio y seguro.</p>
+        </section>
+
+        <!-- Sección de videos con miniaturas y reproductor -->
+        <section id="videoSection">
+            <h2>Videos</h2>
+
+            <div class="thumbnail-gallery">
+                <!-- Miniatura que al hacer clic puede cambiar el video -->
+                <img src="m1.jpg" alt="Video 1"
+                    data-video="https://www.cemdo.com.ar/wp-content/uploads/2025/08/BENEFICIOS_DEL_PARQUE_SOLAR.mp4"
+                    tabindex="0">
+            </div>
+
+            <!-- Reproductor de video con controles y compatibilidad móvil -->
+            <video id="miVideo" width="720" controls playsinline>
+                <source src="https://www.cemdo.com.ar/wp-content/uploads/2025/08/BENEFICIOS_DEL_PARQUE_SOLAR.mp4"
+                    type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </section>
+
+        <!-- Script para manejar la reproducción automática del video según la visibilidad en pantalla -->
+        <script>
+            const video = document.getElementById('miVideo');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // ✅ Cuando el video entra en la vista, reproducir con sonido
+                        video.muted = false;
+                        video.play().catch(err => {
+                            console.warn('Autoplay con sonido fue bloqueado por el navegador:', err);
+                        });
+                    } else {
+                        // 🛑 Cuando el video sale de la vista, pausar
+                        video.pause();
+                    }
+                });
+            }, {
+                threshold: 0.6 // Al menos 60% visible para activar
+            });
+
+            observer.observe(video);
+        </script>
+
+        <!-- Estilos específicos para la galería de miniaturas de videos -->
+        <style>
+            .thumbnail-gallery {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .thumbnail-gallery img {
+                width: 160px;
+                height: 90px;
+                cursor: pointer;
+                border: 2px solid transparent;
+                transition: border-color 0.3s ease;
+            }
+
+            .thumbnail-gallery img:hover,
+            .thumbnail-gallery img:focus {
+                border-color: #007BFF;
+                outline: none;
+            }
+
+            .thumbnail-gallery img.active {
+                border-color: #0056b3;
+            }
+        </style>
+
+        <!-- Sección galería de imágenes -->
+        <section id="galeria">
+            <h2>Galería</h2>
+            <div class="imagenes">
+                <!-- Imágenes de la usina solar -->
+                <img src="1.jpg" alt="usina1" class="img-galeria">
+                <img src="2.jpg" alt="usina1" class="img-galeria">
+                <img src="3.jpg" alt="usina1" class="img-galeria">
+                <img src="5.jpg" alt="usina1" class="img-galeria">
+                <img src="6.jpg" alt="usina1" class="img-galeria">
+                <img src="7.jpg" alt="usina1" class="img-galeria">
+                <img src="8.jpg" alt="usina1" class="img-galeria">
+                <img src="9.jpg" alt="usina1" class="img-galeria">
+            </div>
+        </section>
+
+        <!-- Sección con mapa interactivo de ubicación -->
+        <section id="ubicacion" tabindex="-1" aria-labelledby="ubicacion-title">
+            <h2 id="ubicacion-title">Ubicación Geográfica</h2>
+
+            <div id="mapa" style="height: 400px;"
+                aria-label="Mapa interactivo que muestra la ubicación geográfica de la Usina Solar Fotovoltaica CEMDO I en Villa Dolores, Córdoba">
+            </div>
+        </section>
+
+        <!-- Leaflet CSS y JS (repetidos, podrías dejar solo una vez en <head>) -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+        <!-- Script para inicializar mapa Leaflet -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const lat = -32.044537;
+                const lng = -65.216368;
+                const maxZoomLevel = 17;
+
+                // Capa base callejera (OpenStreetMap)
+                const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: maxZoomLevel,
+                    attribution: '&copy; OpenStreetMap contributors'
+                });
+
+                // Capa base satelital (ESRI WorldImagery)
+                const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/' +
+                    'World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: maxZoomLevel,
+                    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, ' +
+                        'AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                });
+
+                // Crear mapa centrado en coordenadas con capa satelital activa por defecto
+                const map = L.map('mapa', {
+                    center: [lat, lng],
+                    zoom: 15,
+                    maxZoom: maxZoomLevel,
+                    layers: [satellite]  // Satelital por defecto
+                });
+
+                // Control para cambiar entre capas base
+                const baseMaps = {
+                    "Callejero": osm,
+                    "Satelital": satellite
+                };
+                L.control.layers(baseMaps).addTo(map);
+
+                // Añadir marcador con ventana emergente (popup)
+                L.marker([lat, lng])
+                    .addTo(map)
+                    .bindPopup('<b>Usina Solar Fotovoltaica CEMDO I</b><br>Villa Dolores, Córdoba')
+                    .openPopup();
+            });
+        </script>
+
+        <!-- Sección de interactividad: calculadora, trivia y gráficos -->
+        <section id="interactividad">
+            <h2>Interactividad y Trivia</h2>
+
+            <div class="interactividad-item">
+                <!-- Formulario para calcular ahorro energético -->
+                <form id="formCalculadora">
+                    <label for="consumo">Consumo mensual en kWh:</label>
+                    <input type="number" id="consumo" min="0" step="any" required>
+                    <button type="submit">Calcular</button>
+                </form>
+                <!-- Resultados del cálculo, inicialmente ocultos -->
+                <div id="resultado" class="resultado-calculadora" style="display:none;">
+                    <p id="ahorroDinero"></p>
+                    <p id="ahorroCO2"></p>
+                    <p id="equivalencia"></p>
+                </div>
+            </div>
+
+            <div class="interactividad-item">
+                <!-- Trivia con preguntas, respuestas y retroalimentación -->
+                <p id="puntaje"></p>
+                <div id="pregunta-container">
+                    <p id="pregunta"></p>
+                    <div id="respuestas"></div>
+                    <p id="feedback" aria-live="polite"></p>
+                </div>
+                <button id="reiniciarTrivia">Reiniciar Trivia</button>
+            </div>
+
+            <div class="interactividad-item">
+                <!-- Gráfico dinámico con controles -->
+                <canvas id="graficoProduccion"></canvas>
+                <div class="controles">
+                    <button id="iniciarSimulacion">Iniciar Simulación</button>
+                    <button id="detenerSimulacion">Detener</button>
+                    <button id="reiniciarSimulacion">Reiniciar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección con información del equipo de desarrollo -->
+        <section id="equipo">
+            <h2>Equipo de Desarrollo</h2>
+            <div class="equipo-miembros">
+                <div class="miembro">
+                    <h3>Parsons Tiziano</h3>
+                    <p class="rol">Programación</p>
+                </div>
+                <div class="miembro">
+                    <h3>Ugolini Gianluca</h3>
+                    <p class="rol">Programación</p>
+                </div>
+                <div class="miembro">
+                    <h3>Lucero Valentín</h3>
+                    <p class="rol">Diseño gráfico</p>
+                </div>
+                <div class="miembro">
+                    <h3>Orozco Jeremías</h3>
+                    <p class="rol">Contenido y Control de Calidad</p>
+                </div>
+                <div class="miembro">
+                    <h3>José Pantaleo</h3>
+                    <p class="rol">Docente acesor</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de contacto con dirección y datos -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <address>
+                <ul>
+                    <li><strong>Dirección:</strong> Av. San Martín 255, Villa Dolores, Córdoba</li>
+                    <li><strong>Teléfono:</strong> +54 3544 42-2000</li>
+                    <li><strong>Email:</strong> info@cemdo.com.ar</li>
+                </ul>
+            </address>
+        </section>
+    </main>
+
+    <!-- Pie de página con créditos y enlaces a redes sociales -->
+    <footer>
+        <p>Desarrollado por IPEM 146 "Centenario" | <a href="https://www.cemdo.com.ar" target="_blank">Cooperativa
+                CEMDO</a></p>
+        <div class="redes">
+            <a href="https://www.facebook.com/cemdo" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/cemdo" target="_blank">Instagram</a>
+            <a href="https://www.x.com/cemdo" target="_blank">X (antes Twitter)</a>
+        </div>
+    </footer>
+
+    <!-- Sección para mostrar contador de visitas con imagen externa -->
+    <section id="metricas" class="seccion"
+        style="display: flex; justify-content: center; align-items: center; height: 100px;">
+        <div class="contador-visitas">
+            <div class="counter-display">
+                <img src="https://www.web-counter.net/count_20091204.php?c=0PNgOXzZ8fk" alt="Contador de visitas"
+                    style="vertical-align: middle; border: 0;" loading="lazy" width="120" height="30" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts externos -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

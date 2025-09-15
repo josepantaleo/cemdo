@@ -1,0 +1,533 @@
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Variables de color ===== */
+:root {
+    --fondo: #f0f0f0;
+    --texto: #333333;
+    --header: #006633;
+    --header-texto: #ffffff;
+    --nav: #004d1a;
+    --nav-hover: #ffcc00;
+    --boton: #006633;
+    --boton-hover: #004d1a;
+    --seccion: #ffffff;
+    --sombra: rgba(0, 0, 0, 0.1);
+    --titulo: #006633;
+    --enlace: #006633;
+    --feedback-correcto: #007f00;
+    --feedback-incorrecto: #cc0000;
+    --btn-trivia: #ffd700;
+    --btn-trivia-texto: #000;
+    --btn-trivia-sombra: rgba(255, 215, 0, 0.6);
+    --btn-reiniciar: #4caf50;
+    --btn-reiniciar-texto: #fff;
+    --btn-calculadora: #0077cc;
+    --btn-calculadora-hover: #005fa3;
+    --input-borde: #ccc;
+}
+
+/* ===== Tema oscuro ===== */
+body.modo-oscuro {
+    --fondo: #121212;
+    --texto: #e0e0e0;
+    --header: #1b5e20;
+    --header-texto: #e0f2f1;
+    --nav: #263238;
+    --nav-hover: #ffd54f;
+    --boton: #2e7d32;
+    --boton-hover: #81c784;
+    --seccion: #1e1e1e;
+    --sombra: rgba(255, 255, 255, 0.1);
+    --titulo: #aed581;
+    --enlace: #80cbc4;
+    --feedback-correcto: #66bb6a;
+    --feedback-incorrecto: #ef5350;
+    --btn-trivia: #444;
+    --btn-trivia-texto: #fff;
+    --btn-trivia-sombra: rgba(0, 0, 0, 0.5);
+    --btn-reiniciar: #333;
+    --btn-reiniciar-texto: #fff;
+    --btn-calculadora: #333333;
+    --btn-calculadora-hover: #555555;
+    --input-borde: #555;
+}
+
+/* ===== Body y tipografía ===== */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: var(--fondo);
+    color: var(--texto);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: var(--header-texto); /* Color del título en el header */
+}
+
+h2 {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    color: var(--titulo);
+}
+
+p, li {
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Header ===== */
+header {
+    background-color: var(--header);
+    color: var(--header-texto);
+    text-align: center;
+    padding: 30px 20px;
+    transition: background-color 0.3s ease;
+}
+
+header .logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* ===== Navegación ===== */
+nav {
+    background-color: var(--nav);
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: var(--header-texto);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--nav-hover);
+}
+
+/* ===== Secciones y Contenedores ===== */
+section,
+.video-section,
+.interactividad-item,
+.simulador-container,
+#calculadora {
+    padding: 25px 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    background-color: var(--seccion);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--sombra);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul {
+    list-style: disc inside;
+    margin-bottom: 10px;
+}
+
+a {
+    color: var(--enlace);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Botones ===== */
+button,
+.respuesta-btn,
+#toggleTema,
+#reiniciarTrivia {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    user-select: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px var(--sombra);
+}
+
+#toggleTema {
+    background-color: var(--boton);
+    color: #fff;
+}
+
+#toggleTema:hover {
+    background-color: var(--boton-hover);
+}
+
+.respuesta-btn {
+    background-color: var(--btn-trivia);
+    color: var(--btn-trivia-texto);
+    box-shadow: 0 3px 6px var(--btn-trivia-sombra);
+}
+
+.respuesta-btn:hover:not(:disabled) {
+    background-color: var(--nav-hover);
+    transform: scale(1.05);
+}
+
+.respuesta-btn.correcto {
+    background-color: var(--feedback-correcto);
+    color: #000;
+    box-shadow: 0 0 12px var(--feedback-correcto);
+    border: 2px solid var(--feedback-correcto);
+}
+
+.respuesta-btn.incorrecto {
+    background-color: var(--feedback-incorrecto);
+    color: #000;
+    box-shadow: 0 0 12px var(--feedback-incorrecto);
+    border: 2px solid var(--feedback-incorrecto);
+}
+
+#reiniciarTrivia {
+    background-color: var(--btn-reiniciar);
+    color: var(--btn-reiniciar-texto);
+    box-shadow: 0 3px 6px rgba(76, 175, 80, 0.6);
+}
+
+#reiniciarTrivia:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(69, 160, 73, 0.75);
+}
+
+/* ===== Calculadora ===== */
+#calculadora input,
+#calculadora button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid var(--input-borde);
+    transition: border-color 0.3s ease;
+}
+
+#calculadora input:focus {
+    border-color: var(--boton);
+    outline: none;
+}
+
+#calculadora button {
+    background-color: var(--btn-calculadora);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#calculadora button:hover {
+    background-color: var(--btn-calculadora-hover);
+}
+
+/* ===== Galería, Mapa y Feedback ===== */
+#galeria .imagenes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.img-galeria {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.img-galeria:hover {
+    transform: scale(2.5);
+    box-shadow: 8px 8px 15px rgba(76, 60, 96, 0.3);
+    filter: brightness(1.1) saturate(1.2);
+}
+
+#mapa {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px var(--sombra);
+    border: 1px solid var(--input-borde);
+}
+
+#feedback {
+    font-weight: 700;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+#feedback.correcto {
+    color: var(--feedback-correcto);
+}
+
+#feedback.incorrecto {
+    color: var(--feedback-incorrecto);
+}
+
+#puntaje {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 15px;
+    color: var(--titulo);
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: var(--nav);
+    color: var(--header-texto);
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.redes a {
+    margin-right: 15px;
+    font-weight: 700;
+    color: var(--enlace);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.redes a:hover {
+    color: var(--titulo);
+}
+
+/* ===== Video Section ===== */
+.video-section {
+    text-align: center;
+    max-width: 600px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--sombra);
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.video-caption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--texto);
+}
+
+/* ===== Lightbox ===== */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+#lightbox button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+#lightbox button:hover {
+    transform: scale(1.2);
+}
+
+#cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#cerrar:hover {
+    transform: scale(1.2);
+}
+
+/* ===== Variables de color para la Trivia ===== */
+:root {
+    --trivia-fondo: #f9f9f9;
+    --trivia-borde: #ddd;
+    --btn-trivia-texto: #000;
+}
+
+body.modo-oscuro {
+    --trivia-fondo: #2c2c2c;
+    --trivia-borde: #555;
+    --btn-trivia-texto: #fff;
+}
+
+/* ===== Sección de la Trivia (Contenedor principal) ===== */
+#trivia {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 700px; /* Tamaño un poco más compacto */
+    padding: 30px;
+    background-color: var(--trivia-fondo);
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 5px 20px var(--sombra);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--trivia-borde);
+}
+
+/* ===== Títulos de la Trivia ===== */
+#trivia h3 {
+    font-size: 1.8rem;
+    color: var(--titulo);
+    margin-bottom: 1rem;
+}
+
+#pregunta {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    color: var(--texto);
+}
+
+/* ===== Contenedor de las respuestas ===== */
+#respuestas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los botones */
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Botones de respuesta ===== */
+.respuesta-btn {
+    padding: 15px;
+    background-color: var(--btn-trivia);
+    color: var(--btn-trivia-texto);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 2px solid transparent; /* Borde transparente por defecto */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--btn-trivia-sombra);
+}
+
+.respuesta-btn:hover:not(:disabled) {
+    background-color: var(--nav-hover);
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.8);
+}
+
+.respuesta-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ===== Feedback (Correcto/Incorrecto) ===== */
+#feedback {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 15px;
+    min-height: 25px; /* Para evitar saltos de layout */
+}
+
+#feedback.correcto {
+    color: var(--feedback-correcto);
+    animation: bounceIn 0.5s;
+}
+
+#feedback.incorrecto {
+    color: var(--feedback-incorrecto);
+    animation: shake 0.5s;
+}
+
+/* ===== Animaciones para el feedback ===== */
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
