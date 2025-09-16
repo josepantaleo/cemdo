@@ -254,7 +254,7 @@ button,
 }
 
 .img-galeria {
-    width: 300px;
+    width: calc(25% - 15px); /* 4 por fila, restando el espacio del gap */
     height: 200px;
     object-fit: cover;
     border-radius: 5px;
@@ -267,6 +267,7 @@ button,
     box-shadow: 8px 8px 15px rgba(76, 60, 96, 0.3);
     filter: brightness(1.1) saturate(1.2);
 }
+
 
 #mapa {
     width: 100%;
@@ -531,3 +532,32 @@ body.modo-oscuro {
     }
 }
 
+/* Estilos para el modal */
+.modal {
+    display: none; /* oculto por defecto */
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+#modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
