@@ -2,23 +2,18 @@
 <html lang="es">
 
 <head>
-    <!-- Metadatos básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usina Solar Fotovoltaica CEMDO I</title>
-    <!-- Estilos principales -->
     <link rel="stylesheet" href="style.css">
-    <!-- Estilos para Leaflet (mapas) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Biblioteca para gráficos (Chart.js) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="tema-claro">
-    <!-- Encabezado con logo, título y botones para cambiar tema e idioma -->
     <header>
         <div class="logo">
-            <img src="logo_Cemdo.png" alt="Logotipo de la Cooperativa CEMDO">
+            <img src="logo_Cemdo.webp" alt="Logotipo de la Cooperativa CEMDO">
         </div>
         <h1>Usina Solar Fotovoltaica CEMDO I</h1>
         <p>Energía limpia para Villa Dolores y la región</p>
@@ -26,7 +21,6 @@
         <button id="cambiarIdioma" aria-label="Cambiar idioma">English</button>
     </header>
 
-    <!-- Barra de navegación con enlaces a secciones -->
     <nav>
         <a href="#info">Información</a>
         <a href="#galeria">Galería</a>
@@ -37,9 +31,7 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <!-- Contenido principal -->
     <main>
-        <!-- Sección de información general sobre la usina solar -->
         <section id="info">
             <h2>Sobre la Usina Solar</h2>
             <p>El “Parque Solar Papa Francisco”, sede de la Usina Solar Fotovoltaica CEMDO I, honra el legado del Papa
@@ -56,7 +48,6 @@
                 CEMDO</a>
         </section>
 
-        <!-- Sección explicativa sobre la energía solar -->
         <section id="sobre-energia-solar" tabindex="-1" aria-labelledby="energia-solar-title">
             <h2 id="energia-solar-title">¿Qué es la Energía Solar?</h2>
             <p>La energía solar es una fuente de energía renovable que se obtiene directamente del sol, utilizando la
@@ -84,18 +75,15 @@
                 limpio y seguro.</p>
         </section>
 
-        <!-- Sección de videos con miniaturas y reproductor -->
         <section id="videoSection">
             <h2>Videos</h2>
 
             <div class="thumbnail-gallery">
-                <!-- Miniatura que al hacer clic puede cambiar el video -->
-                <img src="m1.jpg" alt="Video 1"
+                <img src="m1.webp" alt="Video 1"
                     data-video="https://www.cemdo.com.ar/wp-content/uploads/2025/08/BENEFICIOS_DEL_PARQUE_SOLAR.mp4"
                     tabindex="0">
             </div>
 
-            <!-- Reproductor de video con controles y compatibilidad móvil -->
             <video id="miVideo" width="720" controls playsinline>
                 <source src="https://www.cemdo.com.ar/wp-content/uploads/2025/08/BENEFICIOS_DEL_PARQUE_SOLAR.mp4"
                     type="video/mp4">
@@ -103,14 +91,12 @@
             </video>
         </section>
 
-        <!-- Script para manejar la reproducción automática del video según la visibilidad en pantalla -->
         <script>
             const video = document.getElementById('miVideo');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // ✅ Cuando el video entra en la vista, reproducir con sonido
                         video.muted = false;
                         video.play().catch(err => {
                             console.warn('Autoplay con sonido fue bloqueado por el navegador:', err);
@@ -120,13 +106,12 @@
                     }
                 });
             }, {
-                threshold: 0.6 // Al menos 60% visible para activar
+                threshold: 0.6
             });
 
             observer.observe(video);
         </script>
 
-        <!-- Estilos específicos para la galería de miniaturas de videos -->
         <style>
             .thumbnail-gallery {
                 display: flex;
@@ -153,85 +138,49 @@
             }
         </style>
 
-        <!-- Sección galería de imágenes -->
         <section id="galeria">
             <h2>Galería</h2>
             <div class="imagenes">
-                <!-- Imágenes de la usina solar -->
-                <img src="1.jpg" alt="vista dron 1" class="img-galeria">
-                <img src="2.jpg" alt="vista dron 2" class="img-galeria">
-                <img src="3.jpg" alt="acto" class="img-galeria">
-                <img src="5.jpg" alt="maquinaria" class="img-galeria">
-                <img src="6.jpg" alt="vista general" class="img-galeria">
-                <img src="7.jpg" alt="autoridades" class="img-galeria">
-                <img src="8.jpg" alt="autoridades 1" class="img-galeria">
-                <img src="9.jpg" alt="proyecto" class="img-galeria">
-                <img src="10.png" alt="proyecto" class="img-galeria">
-                <img src="11.png" alt="proyecto" class="img-galeria">
-                <img src="12.png" alt="proyecto" class="img-galeria">
-                <img src="13.png" alt="proyecto" class="img-galeria">
-                <img src="14.png" alt="proyecto" class="img-galeria">
-                <img src="15.png" alt="proyecto" class="img-galeria">
-                <img src="16.png" alt="proyecto" class="img-galeria">
+                <img src="1.webp" alt="vista dron 1" class="img-galeria">
+                <img src="2.webp" alt="vista dron 2" class="img-galeria">
+                <img src="3.webp" alt="acto" class="img-galeria">
+                <img src="5.webp" alt="maquinaria" class="img-galeria">
+                <img src="6.webp" alt="vista general" class="img-galeria">
+                <img src="7.webp" alt="autoridades" class="img-galeria">
+                <img src="8.webp" alt="autoridades 1" class="img-galeria">
+                <img src="9.webp" alt="proyecto" class="img-galeria">
+                <img src="10.webp" alt="proyecto" class="img-galeria">
+                <img src="11.webp" alt="proyecto" class="img-galeria">
+                <img src="12.webp" alt="proyecto" class="img-galeria">
+                <img src="13.webp" alt="proyecto" class="img-galeria">
+                <img src="14.webp" alt="proyecto" class="img-galeria">
+                <img src="15.webp" alt="proyecto" class="img-galeria">
+                <img src="16.webp" alt="proyecto" class="img-galeria">
                 
             </div>
         </section>
-<div class="modal" id="modal">
-  <span id="modal-close">&times;</span>
-  <img id="modal-img" src="" alt="Imagen ampliada">
-</div>
-<script>
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-  const closeBtn = document.getElementById('modal-close');
 
-  document.querySelectorAll('.img-galeria').forEach(img => {
-    img.addEventListener('click', () => {
-      modal.style.display = 'flex';
-      modalImg.src = img.src;
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // También cerrar al hacer clic fuera de la imagen
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-</script>
-
-
-        <!-- Sección con mapa interactivo de ubicación -->
         <section id="ubicacion" tabindex="-1" aria-labelledby="ubicacion-title">
             <h2 id="ubicacion-title">Ubicación Geográfica</h2>
-
             <div id="mapa" style="height: 400px;"
                 aria-label="Mapa interactivo que muestra la ubicación geográfica de la Usina Solar Fotovoltaica CEMDO I en Villa Dolores, Córdoba">
             </div>
         </section>
 
-        <!-- Leaflet CSS y JS (repetidos, podrías dejar solo una vez en <head>) -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-        <!-- Script para inicializar mapa Leaflet -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const lat = -32.051173;
                 const lng = -65.168310;
                 const maxZoomLevel = 17;
 
-                // Capa base callejera (OpenStreetMap)
-                const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.webp', {
                     maxZoom: maxZoomLevel,
                     attribution: '&copy; OpenStreetMap contributors'
                 });
 
-                // Capa base satelital (ESRI WorldImagery)
                 const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/' +
                     'World_Imagery/MapServer/tile/{z}/{y}/{x}', {
                     maxZoom: maxZoomLevel,
@@ -239,22 +188,19 @@
                         'AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
                 });
 
-                // Crear mapa centrado en coordenadas con capa satelital activa por defecto
                 const map = L.map('mapa', {
                     center: [lat, lng],
                     zoom: 15,
                     maxZoom: maxZoomLevel,
-                    layers: [satellite]  // Satelital por defecto
+                    layers: [satellite]
                 });
 
-                // Control para cambiar entre capas base
                 const baseMaps = {
                     "Callejero": osm,
                     "Satelital": satellite
                 };
                 L.control.layers(baseMaps).addTo(map);
 
-                // Añadir marcador con ventana emergente (popup)
                 L.marker([lat, lng])
                     .addTo(map)
                     .bindPopup('<b>Usina Solar Fotovoltaica CEMDO I</b><br>Villa Dolores, Córdoba')
@@ -262,18 +208,15 @@
             });
         </script>
 
-        <!-- Sección de interactividad: calculadora, trivia y gráficos -->
         <section id="interactividad">
             <h2>Interactividad y Trivia</h2>
 
             <div class="interactividad-item">
-                <!-- Formulario para calcular ahorro energético -->
                 <form id="formCalculadora">
                     <label for="consumo">Consumo mensual en kWh:</label>
                     <input type="number" id="consumo" min="0" step="any" required>
                     <button type="submit">Calcular</button>
                 </form>
-                <!-- Resultados del cálculo, inicialmente ocultos -->
                 <div id="resultado" class="resultado-calculadora" style="display:none;">
                     <p id="ahorroDinero"></p>
                     <p id="ahorroCO2"></p>
@@ -282,7 +225,6 @@
             </div>
 
             <div class="interactividad-item">
-                <!-- Trivia con preguntas, respuestas y retroalimentación -->
                 <p id="puntaje"></p>
                 <div id="pregunta-container">
                     <p id="pregunta"></p>
@@ -293,7 +235,6 @@
             </div>
 
             <div class="interactividad-item">
-                <!-- Gráfico dinámico con controles -->
                 <canvas id="graficoProduccion"></canvas>
                 <div class="controles">
                     <button id="iniciarSimulacion">Iniciar Simulación</button>
@@ -303,7 +244,6 @@
             </div>
         </section>
 
-        <!-- Sección con información del equipo de desarrollo -->
         <section id="equipo">
             <h2>Equipo de Desarrollo</h2>
             <div class="equipo-miembros">
@@ -330,7 +270,6 @@
             </div>
         </section>
 
-        <!-- Sección de contacto con dirección y datos -->
         <section id="contacto">
             <h2>Contacto</h2>
             <address>
@@ -343,18 +282,15 @@
         </section>
     </main>
 
-    <!-- Pie de página con créditos y enlaces a redes sociales -->
     <footer>
         <p>Desarrollado por IPEM 146 "Centenario" | <a href="https://www.cemdo.com.ar" target="_blank">Cooperativa
                 CEMDO</a></p>
         <div class="redes">
-            <a href="https://www.facebook.com/cemdo" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/cemdo" target="_blank">Instagram</a>
-            <a href="https://www.x.com/cemdo" target="_blank">X (antes Twitter)</a>
+            <a href="https://www.facebook.com/cooperativa.cemdo/mentions/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/cooperativacemdo/" target="_blank">Instagram</a>
         </div>
     </footer>
 
-    <!-- Sección para mostrar contador de visitas con imagen externa -->
     <section id="metricas" class="seccion"
         style="display: flex; justify-content: center; align-items: center; height: 100px;">
         <div class="contador-visitas">
@@ -365,7 +301,6 @@
         </div>
     </section>
 
-    <!-- Scripts externos -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
